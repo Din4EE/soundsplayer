@@ -1,0 +1,29 @@
+version: '3.8'
+
+volumes:
+  postgres_volume:
+
+services:
+  db:
+    container_name: postgres_repo_tracks
+    image: postgres:16-alpine3.18
+    restart: unless-stopped
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+  #ngrok:
+  #  image: ngrok/ngrok:latest
+  #  command:
+  #    - "start"
+  #    - "--all"
+  #    - "--config"
+  #    - "/etc/ngrok.yml"
+  #  volumes:
+  #    - ./configs/ngrok.yml:/etc/ngrok.yml
+  #  ports:
+  #    - "4040:4040"

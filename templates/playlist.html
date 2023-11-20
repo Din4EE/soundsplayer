@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+
+<div class="container-fluid my-3">
+    <div class="row">
+        <div class="col">
+            <h2 class="text-center">Playlist</h2>
+            <ul class="track-list">
+                {{ range . }}
+                <li class="track row no-gutters">
+                    <div class="track-icon col-auto" {{ if .Cover }}style="background-image: url('{{ .Cover }}');"{{ end }}></div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="track">
+                                <button class="play-button" data-src="{{ .Audio }}">►</button>
+                                <button class="pause-button">❚❚</button>
+                                <span>{{ .Title }} {{ .Artist }}</span>
+                                <div class="progress-bar">
+                                    <div class="progress"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{ end }}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+<script src="/assets/js/script.js"></script>
+</body>
+</html>
